@@ -31,7 +31,7 @@ export function Header({ mobileNavOpen, onMenuOpen }: HeaderProps) {
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="section-container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
-          <img src={oibLogo} alt={logoLabel} className="h-11 w-auto" />
+          <img src={oibLogo} alt={logoLabel} className="h-11 w-auto" width={150} height={44} decoding="async" fetchPriority="high" />
           <div className="hidden items-center gap-1 sm:flex flex-col leading-tight">
             <span className="text-base font-semibold text-foreground">{logoLabel}</span>
             <span className="text-xs text-muted-foreground">{locale === 'ar' ? siteConfig.nameEn : siteConfig.name}</span>

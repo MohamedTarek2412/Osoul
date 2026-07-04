@@ -33,6 +33,10 @@ export function CertificationsSection() {
                 src={cert.logo}
                 alt={locale === 'ar' ? cert.nameAr : cert.nameEn}
                 className="max-h-16 w-full object-contain"
+                width={150}
+                height={64}
+                decoding="async"
+                loading="lazy"
               />
               <p className="mt-3 text-center text-xs text-muted-foreground">
                 {locale === 'ar' ? cert.nameAr : cert.nameEn}

@@ -15,7 +15,7 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-3">
           <div>
             <div className="mb-4">
-              <img src={oibLogo} alt={locale === 'ar' ? siteConfig.name : siteConfig.nameEn} className="h-10 w-auto" />
+              <img src={oibLogo} alt={locale === 'ar' ? siteConfig.name : siteConfig.nameEn} className="h-10 w-auto" width={136} height={40} decoding="async" loading="lazy" />
             </div>
             <p className="text-sm text-muted-foreground">
               {locale === 'ar' ? siteConfig.description : siteConfig.descriptionEn}

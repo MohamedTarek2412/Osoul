@@ -83,6 +83,10 @@ export function LicensedTrustedSection() {
                   src={fraLogo}
                   alt={locale === 'ar' ? license.authorityAr : license.authorityEn}
                   className="max-h-16 w-full object-contain"
+                  width={160}
+                  height={64}
+                  decoding="async"
+                  loading="lazy"
                 />
               </div>
             </CardContent>

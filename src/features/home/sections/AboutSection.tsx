@@ -30,6 +30,8 @@ export function AboutSection() {
               src={aboutTeam}
               alt={locale === 'ar' ? companyProfile.about.title : companyProfile.about.title}
               className="aspect-[4/3] w-full object-cover"
+              width={640}
+              height={480}
               loading="lazy"
               decoding="async"
             />
