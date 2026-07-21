@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { footerNav } from '@/config/nav.config';
 import { siteConfig } from '@/config/site.config';
-import { oibLogo } from '@/assets';
+import { oibLogoSm } from '@/assets';
 import { useLanguage } from '@/hooks/useLanguage';
 
 export function Footer() {
@@ -18,11 +18,11 @@ export function Footer() {
           <div>
             <div className="mb-4 flex items-center gap-2 sm:gap-3">
               <img
-                src={oibLogo}
+                src={oibLogoSm}
                 alt={locale === 'ar' ? siteConfig.name : siteConfig.nameEn}
-                className="h-20 w-auto sm:h-22"
-                width={240}
-                height={96}
+                className="h-14 w-auto sm:h-16"
+                width={160}
+                height={64}
                 decoding="async"
                 loading="lazy"
               />

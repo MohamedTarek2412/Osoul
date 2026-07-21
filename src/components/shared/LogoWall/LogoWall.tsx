@@ -23,11 +23,12 @@ export function LogoWall({ clients, className }: LogoWallProps) {
                 src={client.logo}
                 alt={client.name}
                 className="max-h-20 w-full object-contain opacity-95 transition duration-300 group-hover:opacity-100"
-                width={200}
-                height={80}
+                width={149}
+                height={149}
                 decoding="async"
                 loading="lazy"
                 fetchPriority="low"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
               />
             </div>
             <div className="mt-5 text-center">

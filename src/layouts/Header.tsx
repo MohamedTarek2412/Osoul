@@ -5,7 +5,7 @@ import { siteConfig } from '@/config/site.config';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/hooks/useLanguage';
 import { useTheme } from '@/hooks/useTheme';
-import { oibLogo } from '@/assets';
+import { oibLogoSm } from '@/assets';
 import { cn } from '@/lib/utils';
 
 interface HeaderProps {
@@ -30,12 +30,13 @@ export function Header({ mobileNavOpen, onMenuOpen }: HeaderProps) {
       <div className="section-container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2 sm:gap-3">
           <img
-            src={oibLogo}
+            src={oibLogoSm}
             alt={locale === 'ar' ? siteConfig.name : siteConfig.nameEn}
-            className="h-20 w-auto object-contain transition-all duration-300 sm:h-22"
-            width={240}
-            height={88}
+            className="h-14 w-auto object-contain transition-all duration-300 sm:h-16"
+            width={160}
+            height={64}
             decoding="async"
+            loading="eager"
             fetchPriority="high"
           />
           <div className="flex flex-col leading-tight text-foreground">

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Shield } from 'lucide-react';
-import { heroOffice, heroOfficeMd, heroOfficeSm } from '@/assets';
+import { heroOfficeMd, heroOfficeSm } from '@/assets';
 import { siteConfig } from '@/config/site.config';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Button } from '@/components/ui/button';
@@ -52,12 +52,15 @@ export function HeroSection() {
               <source srcSet={heroOfficeSm} media="(max-width: 640px)" />
               <source srcSet={heroOfficeMd} media="(max-width: 1024px)" />
               <img
-                src={heroOffice}
+                src={heroOfficeMd}
                 alt={copy.hero.title}
                 className="aspect-[4/3] w-full object-cover"
-                width={1364}
-                height={1024}
+                width={748}
+                height={499}
+                loading="eager"
+                decoding="async"
                 fetchPriority="high"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 50vw"
               />
             </picture>
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
