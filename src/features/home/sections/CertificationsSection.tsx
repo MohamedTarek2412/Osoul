@@ -37,8 +37,9 @@ export function CertificationsSection() {
                 height={64}
                 decoding="async"
                 loading="lazy"
+                fetchPriority="low"
               />
-              <p className="mt-3 text-center text-xs text-muted-foreground">
+              <p className="mt-3 text-center text-sm font-medium text-muted-foreground">
                 {locale === 'ar' ? cert.nameAr : cert.nameEn}
               </p>
             </motion.div>

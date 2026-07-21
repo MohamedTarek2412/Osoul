@@ -27,11 +27,12 @@ export function LogoWall({ clients, className }: LogoWallProps) {
                 height={80}
                 decoding="async"
                 loading="lazy"
+                fetchPriority="low"
               />
             </div>
             <div className="mt-5 text-center">
-              <p className="text-base font-semibold text-foreground">{client.name}</p>
-              <p className="mt-2 text-sm text-muted-foreground">{client.industry}</p>
+              <p className="text-lg font-bold text-foreground">{client.name}</p>
+              <p className="mt-2 text-base text-muted-foreground">{client.industry}</p>
             </div>
           </div>
         </li>

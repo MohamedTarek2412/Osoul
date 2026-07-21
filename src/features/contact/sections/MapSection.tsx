@@ -25,6 +25,7 @@ export function MapSection() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
+            sandbox="allow-scripts allow-same-origin allow-popups"
           />
         </CardContent>
       </Card>

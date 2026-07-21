@@ -10,7 +10,7 @@ export const license: LicenseInfo = {
   descriptionEn:
     'Osoul Insurance Brokerage is licensed and regulated by the Egyptian Financial Regulatory Authority (FRA) to operate as an insurance broker under license number 92.',
   descriptionAr:
-    'أصول للتأمين مرخصة وخاضعة لرقابة الهيئة المصرية للرقابة المالية (FRA) للعمل كوسيط تأميني تحت رقم الترخيص 92.',
+  'أصول للوساطة التأمينية شركة مرخصة وخاضعة لإشراف ورقابة الهيئة العامة للرقابة المالية (FRA)، وتمارس نشاط الوساطة التأمينية بموجب الترخيص رقم 92 لسنة 2019.',
   issuedYear: 2019,
   status: 'Active',
 };
@@ -30,9 +30,9 @@ export const trustHighlights: TrustHighlight[] = [
   },
   {
     id: 'experience',
-    label: '15+ Years Experience',
-    labelEn: '15+ Years Experience',
-    labelAr: 'أكثر من 15 سنة خبرة',
+    label: '7+ Years Experience',
+    labelEn: '7+ Years Experience',
+    labelAr: 'أكثر من 7 سنوات خبرة',
   },
   {
     id: 'international',

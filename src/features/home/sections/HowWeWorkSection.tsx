@@ -31,10 +31,10 @@ export function HowWeWorkSection() {
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
                     {step.step}
                   </span>
-                  <h3 className="mt-3 font-semibold">
+                  <h3 className="mt-3 text-lg font-bold">
                     {locale === 'ar' ? step.title : step.titleEn}
                   </h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-muted-foreground">
                     {locale === 'ar' ? step.description : step.descriptionEn}
                   </p>
                 </CardContent>

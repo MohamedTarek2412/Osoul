@@ -25,16 +25,26 @@ export function Header({ mobileNavOpen, onMenuOpen }: HeaderProps) {
     setLocale(locale === 'ar' ? 'en' : 'ar');
   };
 
-  const logoLabel = locale === 'ar' ? siteConfig.name : siteConfig.nameEn;
-
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="section-container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
-          <img src={oibLogo} alt={logoLabel} className="h-11 w-auto" width={150} height={44} decoding="async" fetchPriority="high" />
-          <div className="hidden items-center gap-1 sm:flex flex-col leading-tight">
-            <span className="text-base font-semibold text-foreground">{logoLabel}</span>
-            <span className="text-xs text-muted-foreground">{locale === 'ar' ? siteConfig.nameEn : siteConfig.name}</span>
+        <Link to="/" className="flex items-center gap-2 sm:gap-3">
+          <img
+            src={oibLogo}
+            alt={locale === 'ar' ? siteConfig.name : siteConfig.nameEn}
+            className="h-20 w-auto object-contain transition-all duration-300 sm:h-22"
+            width={240}
+            height={88}
+            decoding="async"
+            fetchPriority="high"
+          />
+          <div className="flex flex-col leading-tight text-foreground">
+            <span className="text-[11px] font-semibold sm:text-[12px]">
+              {locale === 'ar' ? 'أصول للوساطة التأمينية' : 'Osoul Insurance Brokerage'}
+            </span>
+            <span className="text-[10px] font-medium text-foreground/80 sm:text-[11px]">
+              {locale === 'ar' ? 'Osoul Insurance Brokerage' : 'أصول للوساطة التأمينية'}
+            </span>
           </div>
         </Link>
 

@@ -8,16 +8,34 @@ import { useLanguage } from '@/hooks/useLanguage';
 export function Footer() {
   const { locale, copy } = useLanguage();
   const address = locale === 'ar' ? siteConfig.address : siteConfig.addressEn;
+  const phoneValues = [siteConfig.phone].filter(Boolean);
+  const emailValues = [siteConfig.email].filter(Boolean);
 
   return (
     <footer className="border-t bg-muted/30">
       <div className="section-container section-padding">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <div className="mb-4">
-              <img src={oibLogo} alt={locale === 'ar' ? siteConfig.name : siteConfig.nameEn} className="h-10 w-auto" width={136} height={40} decoding="async" loading="lazy" />
+            <div className="mb-4 flex items-center gap-2 sm:gap-3">
+              <img
+                src={oibLogo}
+                alt={locale === 'ar' ? siteConfig.name : siteConfig.nameEn}
+                className="h-20 w-auto sm:h-22"
+                width={240}
+                height={96}
+                decoding="async"
+                loading="lazy"
+              />
+              <div className="flex flex-col leading-tight text-foreground">
+                <span className="text-sm font-semibold">
+                  {locale === 'ar' ? 'أصول للوساطة التأمينية' : 'Osoul Insurance Brokerage'}
+                </span>
+                <span className="text-xs font-medium text-foreground/80">
+                  {locale === 'ar' ? 'Osoul Insurance Brokerage' : 'أصول للوساطة التأمينية'}
+                </span>
+              </div>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-muted-foreground">
               {locale === 'ar' ? siteConfig.description : siteConfig.descriptionEn}
             </p>
           </div>
@@ -29,7 +47,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     to={item.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                    className="text-base text-muted-foreground transition-colors hover:text-primary"
                   >
                     {copy.nav[item.id]}
                   </Link>
@@ -40,19 +58,25 @@ export function Footer() {
 
           <div>
             <h3 className="mb-4 font-semibold">{copy.footer.contact}</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
+            <ul className="space-y-3 text-base text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-primary" />
                 <div className="flex flex-col gap-0.5" dir="ltr">
-                  <a href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a>
-                  <a href={`tel:${siteConfig.phoneSecondary}`}>{siteConfig.phoneSecondary}</a>
+                  {phoneValues.map((value) => (
+                    <a key={value} href={`tel:${value.replace(/^0/, '+20')}`}>
+                      {value}
+                    </a>
+                  ))}
                 </div>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-primary" />
                 <div className="flex flex-col gap-0.5">
-                  <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-                  <a href={`mailto:${siteConfig.emailSecondary}`}>{siteConfig.emailSecondary}</a>
+                  {emailValues.map((value) => (
+                    <a key={value} href={`mailto:${value}`}>
+                      {value}
+                    </a>
+                  ))}
                 </div>
               </li>
               <li className="flex items-start gap-2">

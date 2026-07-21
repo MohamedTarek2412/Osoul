@@ -27,10 +27,23 @@ export function ContactFormSection() {
     resolver: zodResolver(contactFormSchema),
   });
 
-  const onSubmit = async (_data: ContactFormValues) => {
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    showToast(copy.contactPage.success, 'success');
-    reset();
+  const onSubmit = async (data: ContactFormValues) => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Submission failed');
+      }
+
+      showToast(copy.contactPage.success, 'success');
+      reset();
+    } catch {
+      showToast(copy.error.errorMessage, 'error');
+    }
   };
 
   return (
@@ -52,7 +65,13 @@ export function ContactFormSection() {
               id="name"
               error={errors.name?.message ? copy.contactPage.errors[errors.name.message as keyof typeof copy.contactPage.errors] : undefined}
             >
-              <Input id="name" placeholder={copy.contactPage.labels.namePlaceholder} {...register('name')} />
+              <Input
+                id="name"
+                aria-invalid={!!errors.name}
+                aria-describedby={errors.name ? 'name-error' : undefined}
+                placeholder={copy.contactPage.labels.namePlaceholder}
+                {...register('name')}
+              />
             </Field>
             <Field
               label={copy.contactPage.labels.email}
@@ -62,6 +81,9 @@ export function ContactFormSection() {
               <Input
                 id="email"
                 type="email"
+                autoComplete="email"
+                aria-invalid={!!errors.email}
+                aria-describedby={errors.email ? 'email-error' : undefined}
                 placeholder={copy.contactPage.labels.emailPlaceholder}
                 dir="ltr"
                 {...register('email')}
@@ -77,14 +99,23 @@ export function ContactFormSection() {
               <Input
                 id="phone"
                 type="tel"
+                autoComplete="tel"
+                aria-invalid={!!errors.phone}
+                aria-describedby={errors.phone ? 'phone-error' : undefined}
                 placeholder={copy.contactPage.labels.phonePlaceholder}
                 dir="ltr"
                 {...register('phone')}
               />
             </Field>
-            <Field label={copy.contactPage.labels.serviceType} id="serviceType">
+            <Field
+              label={copy.contactPage.labels.serviceType}
+              id="serviceType"
+              error={errors.serviceType?.message ? copy.contactPage.errors[errors.serviceType.message as keyof typeof copy.contactPage.errors] : undefined}
+            >
               <select
                 id="serviceType"
+                aria-invalid={!!errors.serviceType}
+                aria-describedby={errors.serviceType ? 'serviceType-error' : undefined}
                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 {...register('serviceType')}
               >
@@ -99,16 +130,26 @@ export function ContactFormSection() {
           </div>
           <Field
             label={copy.contactPage.labels.subject}
+            id="subject"
             error={errors.subject?.message ? copy.contactPage.errors[errors.subject.message as keyof typeof copy.contactPage.errors] : undefined}
           >
-            <Input id="subject" placeholder={copy.contactPage.labels.subjectPlaceholder} {...register('subject')} />
+            <Input
+              id="subject"
+              aria-invalid={!!errors.subject}
+              aria-describedby={errors.subject ? 'subject-error' : undefined}
+              placeholder={copy.contactPage.labels.subjectPlaceholder}
+              {...register('subject')}
+            />
           </Field>
           <Field
             label={copy.contactPage.labels.message}
+            id="message"
             error={errors.message?.message ? copy.contactPage.errors[errors.message.message as keyof typeof copy.contactPage.errors] : undefined}
           >
             <Textarea
               id="message"
+              aria-invalid={!!errors.message}
+              aria-describedby={errors.message ? 'message-error' : undefined}
               placeholder={copy.contactPage.labels.messagePlaceholder}
               rows={5}
               {...register('message')}
@@ -141,7 +182,7 @@ function Field({
         {label}
       </label>
       {children}
-      {error && <p className={cn('text-xs text-destructive')}>{error}</p>}
+      {error && <p id={`${id}-error`} className={cn('text-xs text-destructive')}>{error}</p>}
     </div>
   );
 }

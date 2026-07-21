@@ -1,11 +1,13 @@
 import type { Variants } from 'framer-motion';
 
+const reducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 export const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: 'easeOut' },
+    transition: { duration: reducedMotion ? 0.01 : 0.45, ease: 'easeOut' },
   },
 };
 
@@ -22,8 +24,8 @@ export const staggerContainer: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.05,
+      staggerChildren: reducedMotion ? 0 : 0.08,
+      delayChildren: reducedMotion ? 0 : 0.05,
     },
   },
 };

@@ -18,13 +18,23 @@ export function LanguageProvider({
       return defaultLocale;
     }
 
-    const storedLocale = localStorage.getItem(storageKey) as Locale | null;
-    return storedLocale && locales.includes(storedLocale) ? storedLocale : defaultLocale;
+    try {
+      const storedLocale = window.localStorage.getItem(storageKey) as Locale | null;
+      return storedLocale && locales.includes(storedLocale) ? storedLocale : defaultLocale;
+    } catch {
+      return defaultLocale;
+    }
   });
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    localStorage.setItem(storageKey, locale);
+
+    try {
+      localStorage.setItem(storageKey, locale);
+    } catch {
+      // Ignore storage failures and continue with runtime defaults.
+    }
+
     document.documentElement.lang = locale === 'ar' ? 'ar' : 'en';
     document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
   }, [locale, storageKey]);

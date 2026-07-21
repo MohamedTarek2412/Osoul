@@ -53,10 +53,18 @@ export function Seo({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:site_name" content={siteConfig.nameEn} />
+      <meta property="og:image" content={`${siteConfig.url}/favicon.png`} />
+      <meta property="og:image:alt" content={siteConfig.nameEn} />
+      <meta property="og:locale" content="ar_EG" />
+      <meta property="og:locale:alternate" content="en_US" />
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image" content={`${siteConfig.url}/favicon.png`} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:url" content={url} />
+      <link rel="alternate" hrefLang="ar" href={`${siteConfig.url}/`} />
+      <link rel="alternate" hrefLang="en" href={`${siteConfig.url}/`} />
+      <link rel="alternate" hrefLang="x-default" href={`${siteConfig.url}/`} />
       <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
     </Helmet>
   );

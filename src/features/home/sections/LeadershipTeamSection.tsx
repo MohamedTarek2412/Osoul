@@ -35,12 +35,12 @@ export function LeadershipTeamSection() {
                   <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 text-2xl font-bold text-primary">
                     {getInitials(member.name)}
                   </div>
-                  <h3 className="text-xl font-semibold">{locale === 'ar' ? member.name : member.nameEn}</h3>
-                  <p className="mt-1 text-sm font-medium text-primary">
+                  <h3 className="text-xl font-bold">{locale === 'ar' ? member.name : member.nameEn}</h3>
+                  <p className="mt-1 text-base font-semibold text-primary">
                     {locale === 'ar' ? member.roleAr : member.roleEn}
                   </p>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{member.role}</p>
-                  <p className="mt-3 text-sm text-muted-foreground">
+                  <p className="mt-0.5 text-sm text-muted-foreground">{member.role}</p>
+                  <p className="mt-3 text-base text-muted-foreground">
                     {locale === 'ar' ? member.bio : member.bioEn}
                   </p>
                 </CardContent>

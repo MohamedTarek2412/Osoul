@@ -19,8 +19,8 @@ export function CtaSection() {
           variants={fadeInUp}
           className="rounded-2xl bg-gradient-to-l from-primary to-primary/80 p-8 text-center text-primary-foreground transition-transform hover:scale-[1.01] md:p-12"
         >
-          <h2 className="text-3xl font-bold md:text-4xl">{copy.cta.title}</h2>
-          <p className="mx-auto mt-4 max-w-xl text-primary-foreground/90">
+          <h2 className="text-3xl font-extrabold md:text-4xl">{copy.cta.title}</h2>
+          <p className="mx-auto mt-4 max-w-xl text-lg font-medium text-primary-foreground/90">
             {copy.cta.description}
           </p>
           <Button asChild size="lg" variant="secondary" className="mt-8">

@@ -10,8 +10,8 @@ export const seoConfig = {
       'تأمين طبي',
       'تأمين سيارات',
       'تأمين شركات',
-      'مصر',
-      'أصول للتأمين',
+      'مصر', 
+      'أصول للوساطة التأمينية',
     ],
     ogType: 'website',
     twitterCard: 'summary_large_image' as const,
@@ -29,7 +29,7 @@ export const seoConfig = {
     contact: {
       title: `تواصل معنا | ${siteConfig.name}`,
       description:
-        'تواصل مع فريق أصول للتأمين للحصول على استشارة مجانية وحلول تأمينية مخصصة لاحتياجاتك.',
+        'تواصل مع فريق أصول للوساطة التأمينية للحصول على استشارة مجانية وحلول تأمينية مخصصة لاحتياجاتك.',
     },
     notFound: {
       title: `الصفحة غير موجودة | ${siteConfig.name}`,

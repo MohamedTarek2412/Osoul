@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { X } from 'lucide-react';
 import { mainNav } from '@/config/nav.config';
@@ -12,6 +13,25 @@ interface MobileNavProps {
 
 export function MobileNav({ open, onClose }: MobileNavProps) {
   const { copy, locale, setLocale } = useLanguage();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    const focusTarget = firstLinkRef.current ?? closeButtonRef.current;
+    focusTarget?.focus();
+
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [open, onClose]);
 
   if (!open) return null;
 
@@ -27,14 +47,15 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
       >
         <div className="mb-8 flex items-center justify-between">
           <span className="font-bold">{copy.header.mobileMenu}</span>
-          <Button variant="ghost" size="icon" onClick={onClose} aria-label={copy.header.closeMenu}>
+          <Button ref={closeButtonRef} variant="ghost" size="icon" onClick={onClose} aria-label={copy.header.closeMenu}>
             <X className="h-5 w-5" />
           </Button>
         </div>
         <ul className="space-y-2">
-          {mainNav.map((item) => (
+          {mainNav.map((item, index) => (
             <li key={item.href}>
               <Link
+                ref={index === 0 ? firstLinkRef : undefined}
                 to={item.href}
                 onClick={onClose}
                 className={cn(

@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "node server.js",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
-    "prepare": "husky"
+    "prepare": "node -e \"if (process.env.CI !== 'true' && process.env.INSTALL_HOOKS !== 'false') { try { require('husky').install(); } catch { process.exit(0); } }\""
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

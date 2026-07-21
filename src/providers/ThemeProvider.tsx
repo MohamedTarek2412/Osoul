@@ -16,7 +16,12 @@ export function ThemeProvider({
 }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>(() => {
     if (typeof window === 'undefined') return defaultTheme;
-    return (localStorage.getItem(storageKey) as Theme) ?? defaultTheme;
+
+    try {
+      return (window.localStorage.getItem(storageKey) as Theme) ?? defaultTheme;
+    } catch {
+      return defaultTheme;
+    }
   });
 
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
@@ -32,7 +37,11 @@ export function ThemeProvider({
   }, [theme]);
 
   const setTheme = (newTheme: Theme) => {
-    localStorage.setItem(storageKey, newTheme);
+    try {
+      localStorage.setItem(storageKey, newTheme);
+    } catch {
+      // Ignore storage failures and continue with runtime state.
+    }
     setThemeState(newTheme);
   };
 

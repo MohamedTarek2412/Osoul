@@ -15,20 +15,22 @@ export function SectionHeading({
   align = 'center',
   className,
 }: SectionHeadingProps) {
+  const headingId = title.replace(/\s+/g, '-').toLowerCase();
+
   return (
-    <section className={cn('mb-12 max-w-2xl', className)} aria-labelledby={title.replace(/\s+/g, '-')}> 
+    <section className={cn('mb-12 max-w-2xl', className)} aria-labelledby={headingId}>
       {subtitle && (
         <p className={cn(
-          'mb-2 text-sm font-semibold uppercase tracking-wider text-primary',
+          'mb-2 text-base font-bold uppercase tracking-wider text-primary',
           align === 'center' ? 'text-center' : 'text-start',
         )}>
           {subtitle}
         </p>
       )}
       <h2
-        id={title.replace(/\s+/g, '-')}
+        id={headingId}
         className={cn(
-          'text-3xl font-bold tracking-tight md:text-4xl',
+          'text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl',
           align === 'center' ? 'text-center' : 'text-start',
         )}
       >
@@ -36,7 +38,7 @@ export function SectionHeading({
       </h2>
       {description && (
         <p className={cn(
-          'mt-4 text-lg text-muted-foreground',
+          'mt-4 text-lg font-medium leading-relaxed text-muted-foreground sm:text-xl',
           align === 'center' ? 'mx-auto text-center' : 'text-start',
         )}>
           {description}

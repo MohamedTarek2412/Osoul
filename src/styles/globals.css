@@ -11,6 +11,14 @@
 
   html {
     scroll-behavior: smooth;
+    /* Larger base font for mobile readability */
+    font-size: 17px;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      font-size: 16px;
+    }
   }
 
   body {

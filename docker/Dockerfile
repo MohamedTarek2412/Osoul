@@ -10,11 +10,18 @@ COPY . .
 RUN npm run build
 
 # Production stage
-FROM nginx:alpine
+FROM node:20-alpine
 
-COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/dist /usr/share/nginx/html
+WORKDIR /app
 
-EXPOSE 80
+COPY package.json package-lock.json* ./
+RUN INSTALL_HOOKS=false npm ci --omit=dev
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/public ./public
+COPY server.js ./server.js
+
+ENV PORT=3000
+EXPOSE 3000
+
+CMD ["node", "server.js"]

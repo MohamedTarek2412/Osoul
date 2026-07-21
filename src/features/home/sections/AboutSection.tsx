@@ -34,10 +34,11 @@ export function AboutSection() {
               height={480}
               loading="lazy"
               decoding="async"
+              fetchPriority="low"
             />
           </div>
           <div className="rounded-2xl border bg-card p-8 shadow-sm">
-            <p className="text-lg leading-relaxed text-muted-foreground">
+            <p className="text-xl font-medium leading-relaxed text-muted-foreground">
               {locale === 'ar'
                 ? 'نؤمن بأن التأمين ليس مجرد وثيقة، بل هو راحة البال والأمان لمستقبلك وعائلتك وعملك. فريقنا المتخصص يعمل على تقديم أفضل الحلول بأنسب الأسعار.'
                 : 'We believe insurance is more than a policy — it is peace of mind and protection for your future, family, and business. Our specialized team delivers the best solutions at competitive prices.'}

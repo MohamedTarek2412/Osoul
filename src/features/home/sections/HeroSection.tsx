@@ -25,10 +25,10 @@ export function HeroSection() {
               <Shield className="ml-1 inline h-3 w-3" />
               {copy.hero.pretitle}
             </Badge>
-            <h1 className="text-4xl font-extrabold leading-tight tracking-tight md:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-black leading-tight tracking-tight sm:text-5xl md:text-5xl lg:text-6xl">
               {copy.hero.title}
             </h1>
-            <p className="max-w-lg text-lg text-muted-foreground">{copy.hero.description}</p>
+            <p className="max-w-lg text-xl font-medium text-muted-foreground">{copy.hero.description}</p>
             <div className="flex flex-wrap gap-4">
               <Button asChild size="lg">
                 <Link to="/services">

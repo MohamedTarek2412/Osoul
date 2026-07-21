@@ -5,21 +5,30 @@ import { useLanguage } from '@/hooks/useLanguage';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { staggerContainer, scaleIn } from '@/lib/motion';
 
+function normalizePhone(phone: string) {
+  const cleaned = phone.replace(/[^+\d]/g, '');
+  if (!cleaned) return '';
+  return cleaned.startsWith('0') ? `+2${cleaned.slice(1)}` : cleaned;
+}
+
 export function ContactInfo() {
   const { locale, copy } = useLanguage();
+
+  const phoneValues = [siteConfig.phone].filter(Boolean);
+  const emailValues = [siteConfig.email].filter(Boolean);
 
   const contactItems = [
     {
       icon: Phone,
       title: copy.contactPage.contactItems.phone,
-      value: [siteConfig.phone, siteConfig.phoneSecondary],
-      href: [`tel:${siteConfig.phone}`, `tel:${siteConfig.phoneSecondary.replace(/[^+\d]/g, '')}`],
+      value: phoneValues,
+      href: phoneValues.map((value) => `tel:${normalizePhone(value)}`),
     },
     {
       icon: Mail,
       title: copy.contactPage.contactItems.email,
-      value: [siteConfig.email, siteConfig.emailSecondary],
-      href: [`mailto:${siteConfig.email}`, `mailto:${siteConfig.emailSecondary}`],
+      value: emailValues,
+      href: emailValues.map((value) => `mailto:${value}`),
     },
     {
       icon: MapPin,

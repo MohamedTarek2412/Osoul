@@ -3,14 +3,18 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
+    image: osoul-app:latest
     ports:
-      - '8080:80'
+      - '3000:3000'
     restart: unless-stopped
+    environment:
+      - NODE_ENV=production
 
   dev:
     build:
       context: .
       dockerfile: docker/Dockerfile.dev
+    image: osoul-dev:latest
     ports:
       - '5173:5173'
     volumes:
@@ -18,3 +22,4 @@ services:
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
+      - VITE_HOST=0.0.0.0

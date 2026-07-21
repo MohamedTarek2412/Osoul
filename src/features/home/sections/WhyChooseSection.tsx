@@ -28,12 +28,12 @@ export function WhyChooseSection() {
             <motion.div key={item.title} variants={scaleIn}>
               <Card className="h-full transition-shadow hover:shadow-md">
                 <CardHeader>
-                  <CardTitle className="text-lg">
+                  <CardTitle className="text-xl font-bold">
                     {locale === 'ar' ? item.title : item.titleEn}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-base text-muted-foreground">
                     {locale === 'ar' ? item.description : item.descriptionEn}
                   </p>
                 </CardContent>
